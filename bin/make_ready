@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+brew install sqlite
+brew cask install pdftotext
+
+gem install \
+  namae \
+  nokogiri \
+  pp \
+  pry
+  rails \
+  rest-client \
+  sqlite3 \
+  street_address \
+  tty-table

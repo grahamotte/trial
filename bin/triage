@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/all'
+
+START_TIME = Time.now
+SCRIPT_NAME = ARGV[0].gsub('.rb', '')
+RUN = "#{START_TIME.strftime("%Y%m%dT%H%M%S")}_#{SCRIPT_NAME}"
+
+FileUtils.mkdir_p("seeds")
+FileUtils.mkdir_p("results/#{RUN}")
+
+log "starting #{SCRIPT_NAME} at #{START_TIME}"
+log nil
+
+load ARGV[0]
+
+END_TIME = Time.now
+log nil
+log "done at #{END_TIME}, took #{END_TIME - START_TIME}s"
