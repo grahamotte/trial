@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+rm -r seeds
+rm -r results
+rm test_script.rb
+
 brew install sqlite
 brew cask install pdftotext
 
