@@ -26,6 +26,7 @@ require_relative 'utils/sqls'
 require_relative 'utils/pdfs'
 require_relative 'utils/xmls'
 require_relative 'utils/benchmarking'
+require_relative 'utils/rollbar'
 
 require_relative 'data_handling/addresses'
 require_relative 'data_handling/names'
