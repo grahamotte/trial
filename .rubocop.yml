@@ -1,0 +1,116 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - "**/db/schema.rb"
+  TargetRubyVersion: 2.3
+
+Layout/AlignHash:
+  Enabled: true
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Layout/IndentFirstArrayElement:
+  EnforcedStyle: consistent
+
+Layout/IndentFirstHashElement:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 1024
+
+Metrics/CyclomaticComplexity:
+  Max: 16
+
+Metrics/LineLength:
+  Max: 512
+
+Metrics/MethodLength:
+  Max: 128
+
+Metrics/ParameterLists:
+  Max: 10
+
+Metrics/PerceivedComplexity:
+  Max: 16
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/ApplicationJob:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Whitelist:
+    - find_by_uid
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Whitelist:
+    - toggle!
+
+Rails/TimeZone:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: true
+
+Style/HashSyntax:
+  Enabled: true
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/WordArray:
+  Enabled: false
