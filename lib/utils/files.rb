@@ -31,5 +31,5 @@ def list_dir(dir)
 end
 
 def make_seed(file)
-  FileUtils.cp(seeds_path(file), results_path(file))
+  FileUtils.cp(results_path(file), seeds_path(file))
 end
