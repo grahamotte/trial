@@ -1,6 +1,6 @@
 def parse_csv_file(filename)
   CSV
-    .foreach(filename, headers: true)
+    .foreach(seeds_path(filename), headers: true)
     .map(&:to_h)
     .map(&:symbolize_keys)
 end
