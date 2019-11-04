@@ -25,6 +25,15 @@ def parse_key(hash, key, type, date_format: '%Y-%m-%d')
   hash.merge(key => new_val)
 end
 
+def parse_keys(hash, schema = {})
+  schema.each do |key, type|
+    next unless hash.key?(key)
+    hash = parse_key(hash, key, type)
+  end
+
+  hash
+end
+
 def count_for_group_by(batch, &block)
   batch
     .group_by(&block)

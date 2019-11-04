@@ -16,4 +16,5 @@ gem install \
   rest-client \
   sqlite3 \
   street_address \
-  tty-table
+  tty-table \
+  aws-sdk
