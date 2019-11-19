@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
+set -e
+
+echo '*** removing demo files ***'
+
 rm -r seeds
 rm -r results
 rm -r tmp
 rm test_script.rb
+
+touch script.rb
+
+echo '*** installing deps ***'
 
 brew install sqlite
 brew cask install pdftotext
@@ -12,10 +20,11 @@ gem install \
   namae \
   nokogiri \
   pp \
-  pry
+  pry \
   rails \
   rest-client \
   sqlite3 \
   street_address \
   tty-table \
-  aws-sdk
+  aws-sdk \
+  google_drive
