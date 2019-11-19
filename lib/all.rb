@@ -15,7 +15,8 @@ require 'rest-client'
 require 'street_address'
 require 'tty-table'
 require 'sqlite3'
-require 'aws-sdk'
+require 'yaml'
+require 'ostruct'
 
 require_relative 'utils/csvs'
 require_relative 'utils/hashes'
@@ -33,7 +34,14 @@ require_relative 'utils/aws'
 require_relative 'data_handling/addresses'
 require_relative 'data_handling/names'
 
-# other
+if File.exists?('credentials.yml')
+  CREDS = JSON.parse(
+    YAML.load_file('credentials.yml').to_json,
+    object_class: OpenStruct,
+  )
+end
+
+# various
 
 def or_nil
   val = yield

@@ -2,6 +2,7 @@
 
 rm -r seeds
 rm -r results
+rm -r tmp
 rm test_script.rb
 
 brew install sqlite

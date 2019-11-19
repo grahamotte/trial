@@ -7,7 +7,6 @@ log list_dir('pdfs')
   .first(5)
 
 log 'test.csv'
-  .then { |x| seeds_path(x) }
   .then { |x| parse_csv_file(x) }
   .then { |x| x.map { |h| parse_key(h, :wow, :float) } }
   .then { |x| x.map { |h| parse_key(h, :lol, :date) } }
@@ -17,13 +16,11 @@ log 'test.csv'
 write(
   'out.sql',
   'test.csv'
-    .then { |x| seeds_path(x) }
     .then { |x| parse_csv_file(x) }
     .then { |x| hashes_to_sql_temp_table(x) },
 )
 
 'test.csv'
-  .then { |x| seeds_path(x) }
   .then { |x| parse_csv_file(x) }
   .then { |x| write_hashes_to_csv('out.csv', x) }
 
