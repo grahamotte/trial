@@ -18,6 +18,10 @@ def write(file, content)
   File.open(results_path(file), 'w') { |f| f << content }
 end
 
+def delete(file)
+  File.delete(results_path(file))
+end
+
 def append(file, content)
   File.open(results_path(file), 'a') { |f| f << content }
 end

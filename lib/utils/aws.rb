@@ -56,8 +56,6 @@ def ddb_upload_items(table, all_items)
           end
         }
       )
-    rescue => e
-      require :pry.to_s; binding.pry
     end
 
     yield(items, i * 25) if block_given?
