@@ -1,8 +1,4 @@
-require: rubocop-rails
-
 AllCops:
-  Exclude:
-    - "**/db/schema.rb"
   TargetRubyVersion: 2.3
 
 Layout/AlignHash:
@@ -48,29 +44,6 @@ Naming/UncommunicativeMethodParamName:
   Enabled: false
 
 Naming/VariableNumber:
-  Enabled: false
-
-Rails:
-  Enabled: true
-
-Rails/ApplicationJob:
-  Enabled: false
-
-Rails/DynamicFindBy:
-  Whitelist:
-    - find_by_uid
-
-Rails/HasManyOrHasOneDependent:
-  Enabled: false
-
-Rails/InverseOf:
-  Enabled: false
-
-Rails/SkipsModelValidations:
-  Whitelist:
-    - toggle!
-
-Rails/TimeZone:
   Enabled: false
 
 Style/AccessModifierDeclarations:
