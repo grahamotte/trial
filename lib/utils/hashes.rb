@@ -2,36 +2,65 @@ def uniq_hash_keys(hashes)
   hashes.flat_map(&:keys).uniq.compact
 end
 
-def parse_key(hash, key, type, date_format: '%Y-%m-%d')
-  val = hash.dig(key)
-
-  new_val = or_nil do
-    case type
-    when :date
-      Date.strptime(val, date_format)
-    when :datetime
-      DateTime.parse(val)
-    when :integer, :int
-      val.to_i
-    when :float
-      val.to_f
-    when :string
-      val.to_s
-    when :alphanum
-      string_to_alphanum(val)
+def sanitize_hash_value(hash, key:, type:, date_format: '%Y-%m-%d')
+  hash.merge(
+    key => or_nil do
+      case type
+      when :date
+        Date.strptime(hash.dig(key), date_format)
+      when :datetime
+        DateTime.parse(hash.dig(key))
+      when :integer, :int
+        hash.dig(key).to_i
+      when :float
+        hash.dig(key).to_f
+      when :string
+        hash.dig(key).to_s
+      when :alphanum
+        string_to_alphanum(hash.dig(key))
+      when :present?
+        hash.dig(key).present?
+      end
     end
-  end
-
-  hash.merge(key => new_val)
+  )
 end
 
-def parse_keys(hash, schema = {})
-  schema.each do |key, type|
-    next unless hash.key?(key)
-    hash = parse_key(hash, key, type)
+def sanitize_hash_values(hash, scheme = {})
+  scheme.each do |k, v|
+    hash = sanitize_hash_value(hash, key: k, type: v)
   end
 
   hash
+end
+
+def rename_hash_key(hash, from:, to:)
+  hash[to] = hash.delete(from)
+  hash
+end
+
+def rename_hash_keys(hash, scheme = {})
+  scheme.each do |k, v|
+    hash = rename_hash_key(hash, from: k, to: v)
+  end
+
+  hash
+end
+
+def merge_hash_groups(*groups, key:, join_type: :inner)
+  groups = groups.map { |group| group.map { |g| [g.dig(key), g] }.to_h }
+
+  keys = begin
+    case join_type
+    when :inner
+      groups.map(&:keys).reduce(&:&)
+    when :all
+      groups.flat_map(&:keys).uniq
+    when :first
+      groups.first.keys
+    end
+  end
+
+  keys.map { |key| groups.map { |g| g.dig(key) }.compact.reduce(&:merge) }
 end
 
 def count_for_group_by(batch, &block)
