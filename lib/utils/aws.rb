@@ -6,8 +6,12 @@ def ddb_connection
   )
 end
 
+def cached_ddb_scan(query)
+  json_cache(query.dig(:table_name)) { ddb_scan(query) }
+end
+
 def ddb_scan(query)
-  segmentation = query.delete(:segmentation) || 1
+  segmentation = query.delete(:segmentation) || 4
 
   threads = (0..segmentation - 1).map do |segment|
     Thread.new do

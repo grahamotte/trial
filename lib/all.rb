@@ -18,6 +18,7 @@ require 'sqlite3'
 require 'yaml'
 require 'ostruct'
 require 'google_drive'
+require 'aws-sdk-dynamodb'
 
 require_relative 'utils/csvs'
 require_relative 'utils/hashes'
