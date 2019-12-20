@@ -5,10 +5,15 @@ set -e
 echo '*** removing demo files ***'
 
 rm -r seeds
-rm -r results
-rm -r tmp
-rm test_script.rb
+mkdir seeds
 
+rm -r results
+mkdir results
+
+rm -r tmp
+mkdir tmp
+
+rm test_script.rb
 touch script.rb
 
 echo '*** installing deps ***'
