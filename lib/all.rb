@@ -19,6 +19,7 @@ require 'yaml'
 require 'ostruct'
 require 'google_drive'
 require 'aws-sdk-dynamodb'
+require 'fuzzy_match'
 
 require_relative 'utils/csvs'
 require_relative 'utils/hashes'
