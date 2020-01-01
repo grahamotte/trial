@@ -2,22 +2,6 @@
 
 set -e
 
-echo '*** removing demo files ***'
-
-rm -r seeds
-mkdir seeds
-
-rm -r results
-mkdir results
-
-rm -r tmp
-mkdir tmp
-
-rm test_script.rb
-touch script.rb
-
-echo '*** installing deps ***'
-
 brew install sqlite
 brew cask install pdftotext
 
@@ -32,4 +16,5 @@ gem install \
   street_address \
   tty-table \
   aws-sdk \
-  google_drive
+  google_drive \
+  fuzzy_match
