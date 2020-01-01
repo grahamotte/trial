@@ -52,3 +52,7 @@ def or_nil
   val
 rescue StandardError
 end
+
+def float?(string)
+  true if Float(string) rescue false
+end
