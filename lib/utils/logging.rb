@@ -1,7 +1,7 @@
-def tablize_hash_set(hash_set, sort: true)
+def render_table_from_hashes(hash_set, sort: true, headers: nil)
   return 'no data' if hash_set.blank?
 
-  headers = uniq_hash_keys(hash_set)
+  headers = headers || uniq_hash_keys(hash_set)
 
   headers.sort! if sort
 
