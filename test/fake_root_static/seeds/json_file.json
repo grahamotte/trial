@@ -1,0 +1,11 @@
+[
+  {
+    "1": "one",
+    "  a  ": "ayyee",
+    "nesting": [{ "something": ["deeper"] }]
+  },
+  1,
+  10,
+  100.1,
+  { "lastly": 42 }
+]
