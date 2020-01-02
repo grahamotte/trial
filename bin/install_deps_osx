@@ -5,16 +5,4 @@ set -e
 brew install sqlite
 brew cask install pdftotext
 
-gem install \
-  namae \
-  nokogiri \
-  pp \
-  pry \
-  rails \
-  rest-client \
-  sqlite3 \
-  street_address \
-  tty-table \
-  aws-sdk \
-  google_drive \
-  fuzzy_match
+bundle install
