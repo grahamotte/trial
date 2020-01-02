@@ -11,6 +11,7 @@ require 'csv'
 
 # trial extensions
 
+require_relative 'trial/utils/various'
 require_relative 'trial/utils/csvs'
 require_relative 'trial/utils/hashes'
 require_relative 'trial/utils/logging'
@@ -34,24 +35,4 @@ if File.exists?('credentials.yml')
     YAML.load_file('credentials.yml').to_json,
     object_class: OpenStruct,
   )
-end
-
-# various
-
-def or_nil
-  val = yield
-  raise if val.blank? || val == 0
-  val
-rescue StandardError
-end
-
-def float?(string)
-  true if Float(string) rescue false
-end
-
-def aggressive_deep_symbolize_keys(maybe_arr)
-  return maybe_arr.deep_symbolize_keys if maybe_arr.respond_to?(:deep_symbolize_keys)
-  return maybe_arr.map { |i| aggressive_deep_symbolize_keys(i) } if maybe_arr.respond_to?(:each)
-
-  maybe_arr
 end
