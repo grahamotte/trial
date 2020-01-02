@@ -7,6 +7,7 @@ require 'active_support/all'
 require 'benchmark'
 require 'set'
 require 'yaml'
+require 'csv'
 
 # trial extensions
 

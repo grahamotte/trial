@@ -7,7 +7,7 @@ RUN = 'run_dir.rb'
 class UnitTest < Minitest::Test
   def setup
     FileUtils.rm_rf('test/fake_root')
-    FileUtils.mkdir_p('test/fake_root')
+    FileUtils.mkdir_p('test/fake_root/results/run_dir.rb')
     FileUtils.cp_r('test/fake_root_static/.', 'test/fake_root')
   end
 
