@@ -1,16 +1,12 @@
 require 'rubygems'
 require 'bundler/setup'
 
-# ruby / rails extensions
-
 require 'active_support/all'
 require 'benchmark'
-require 'set'
-require 'yaml'
 require 'csv'
 require 'pp'
-
-# trial extensions
+require 'set'
+require 'yaml'
 
 require_relative 'trial/utils/various'
 require_relative 'trial/utils/csvs'

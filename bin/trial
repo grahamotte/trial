@@ -18,13 +18,13 @@ FileUtils.mkdir_p("results/#{RUN}")
 FileUtils.mkdir_p("tmp")
 
 # log start
-log "starting #{SCRIPT_NAME} at #{START_TIME}"
+log "starting #{SCRIPT_NAME} at #{START_TIME.iso8601}"
 log nil
 
 # run script
-load ARGV[0]
+load "#{SCRIPT_NAME}.rb"
 
 # log end
 END_TIME = Time.now
 log nil
-log "done at #{END_TIME}, took #{END_TIME - START_TIME}s"
+log "done at #{END_TIME.iso8601}, took #{(END_TIME - START_TIME).round(4)}s"
