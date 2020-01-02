@@ -5,6 +5,7 @@ require_relative '../lib/trial'
 START_TIME = Time.now
 SCRIPT_NAME = ARGV[0].gsub('.rb', '')
 RUN = "#{START_TIME.strftime("%Y%m%dT%H%M%S")}_#{SCRIPT_NAME}"
+ROOT = Dir.pwd
 
 FileUtils.mkdir_p("seeds")
 FileUtils.mkdir_p("results/#{RUN}")

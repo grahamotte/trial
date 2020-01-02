@@ -18,3 +18,8 @@ gem 'ostruct'
 gem 'google_drive'
 gem 'aws-sdk-dynamodb'
 gem 'fuzzy_match'
+
+group :test do
+  gem 'minitest'
+  gem 'rake'
+end

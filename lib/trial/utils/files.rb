@@ -1,39 +1,39 @@
 # paths
 
 def seeds_path(name)
-  "seeds/#{name}"
+  "#{ROOT}/seeds/#{name}"
 end
 
 alias seed_path seeds_path
 
 def seed_exists?(name)
-  File.exists?(seed_path(name))
+  File.exist?(seed_path(name))
 end
 
 alias seeds_exist? seed_exists?
 
 def results_path(name)
-  "results/#{RUN}/#{name}"
+  "#{ROOT}/results/#{RUN}/#{name}"
 end
 
 alias result_path results_path
 
 def result_exists?(name)
-  File.exists?(result_path(name))
+  File.exist?(result_path(name))
 end
 
 alias results_exist? result_exists?
 
 def tmp_path(name)
-  "tmp/#{name}"
+  "#{ROOT}/tmp/#{name}"
 end
 
 def tmp_exists?(name)
-  File.exists?(tmp_path(name))
+  File.exist?(tmp_path(name))
 end
 
 def list_dir(dir)
-  Dir["#{seeds_path(dir)}/**/*"].map { |x| x.gsub('seeds/', '') }
+  Dir["#{seeds_path(dir)}/**/*"]
 end
 
 # reading
