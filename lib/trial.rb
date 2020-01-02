@@ -8,6 +8,7 @@ require 'benchmark'
 require 'set'
 require 'yaml'
 require 'csv'
+require 'pp'
 
 # trial extensions
 
@@ -27,12 +28,3 @@ require_relative 'trial/utils/aws'
 require_relative 'trial/utils/google_drive'
 require_relative 'trial/data_handling/addresses'
 require_relative 'trial/data_handling/names'
-
-# secrets
-
-if File.exists?('credentials.yml')
-  CREDS = JSON.parse(
-    YAML.load_file('credentials.yml').to_json,
-    object_class: OpenStruct,
-  )
-end

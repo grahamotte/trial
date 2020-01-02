@@ -1,8 +1,8 @@
 def ddb_connection
   @connection ||= Aws::DynamoDB::Client.new(
-    access_key_id: CREDS.aws.key,
-    secret_access_key: CREDS.aws.secret,
-    region: CREDS.aws.region,
+    access_key_id: secrets.aws.key,
+    secret_access_key: secrets.aws.secret,
+    region: secrets.aws.region,
   )
 end
 

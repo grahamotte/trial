@@ -1,3 +1,7 @@
+def secrets
+  SECRETS
+end
+
 def or_nil
   val = yield
   raise if val.blank? || val == 0

@@ -2,19 +2,29 @@
 
 require_relative '../lib/trial'
 
+# env
 START_TIME = Time.now
 SCRIPT_NAME = ARGV[0].gsub('.rb', '')
 RUN = "#{START_TIME.strftime("%Y%m%dT%H%M%S")}_#{SCRIPT_NAME}"
 ROOT = Dir.pwd
+SECRETS = JSON.parse(
+  YAML.try(:load_file, 'credentials.yml')&.to_json || '{}',
+  object_class: OpenStruct,
+)
 
+# init standard dirs
 FileUtils.mkdir_p("seeds")
 FileUtils.mkdir_p("results/#{RUN}")
+FileUtils.mkdir_p("tmp")
 
+# log start
 log "starting #{SCRIPT_NAME} at #{START_TIME}"
 log nil
 
+# run script
 load ARGV[0]
 
+# log end
 END_TIME = Time.now
 log nil
 log "done at #{END_TIME}, took #{END_TIME - START_TIME}s"
