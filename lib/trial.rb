@@ -47,3 +47,10 @@ end
 def float?(string)
   true if Float(string) rescue false
 end
+
+def aggressive_deep_symbolize_keys(maybe_arr)
+  return maybe_arr.deep_symbolize_keys if maybe_arr.respond_to?(:deep_symbolize_keys)
+  return maybe_arr.map { |i| aggressive_deep_symbolize_keys(i) } if maybe_arr.respond_to?(:each)
+
+  maybe_arr
+end

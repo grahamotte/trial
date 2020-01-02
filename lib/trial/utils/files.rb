@@ -81,7 +81,7 @@ alias append_results append
 
 def delete(file)
   return unless result_exists?(file)
-  File.delete(results_path(file))
+  FileUtils.rm_r(results_path(file))
 end
 
 alias delete_result delete
@@ -89,12 +89,12 @@ alias delete_results delete
 
 def delete_tmp(file)
   return unless tmp_exists?(file)
-  File.delete(tmp_path(file))
+  FileUtils.rm_r(tmp_path(file))
 end
 
 def delete_seeds(file)
   return unless seed_exists?(file)
-  File.delete(seeds_path(file))
+  FileUtils.rm_r(seeds_path(file))
 end
 
 alias delete_seed delete_seeds

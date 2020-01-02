@@ -9,7 +9,6 @@ gem 'csv'
 gem 'json'
 gem 'namae'
 gem 'nokogiri'
-gem 'pp'
 gem 'rest-client'
 gem 'street_address'
 gem 'tty-table'
@@ -19,7 +18,8 @@ gem 'google_drive'
 gem 'aws-sdk-dynamodb'
 gem 'fuzzy_match'
 
-group :test do
+group :development, :test do
   gem 'minitest'
   gem 'rake'
+  gem 'pry'
 end

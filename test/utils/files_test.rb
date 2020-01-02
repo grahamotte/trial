@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class JsonsTest < UnitTest
+class FilesTest < UnitTest
   def test_base_path_generation
     assert_equal 'test/fake_root/seeds/subdir/file.txt', seed_path('subdir/file.txt')
     assert_equal 'test/fake_root/results/run_dir.rb/subdir/file.txt', result_path('subdir/file.txt')
