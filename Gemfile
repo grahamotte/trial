@@ -17,9 +17,7 @@ gem 'ostruct'
 gem 'google_drive'
 gem 'aws-sdk-dynamodb'
 gem 'fuzzy_match'
-
-group :development, :test do
-  gem 'minitest'
-  gem 'rake'
-  gem 'pry'
-end
+gem 'minitest'
+gem 'rake'
+gem 'pry'
+gem 'smalltext'
