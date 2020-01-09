@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name = 'trials'
   s.authors = 'grahamotte'
   s.licenses = ['MIT']
-  s.version = '0.0.2'
+  s.version = '0.0.3'
   s.date = '2020-01-01'
   s.summary = 'gem for testing out ideas quickly'
   s.executables << 'trial'
