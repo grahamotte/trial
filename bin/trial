@@ -1,21 +1,19 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/trial'
+require_relative '../lib/trials'
 
 # env
 START_TIME = Time.now
 SCRIPT_NAME = ARGV[0].gsub('.rb', '')
 RUN = "#{START_TIME.strftime("%Y%m%dT%H%M%S")}_#{SCRIPT_NAME}"
 ROOT = Dir.pwd
-SECRETS = begin
-  if File.exists?('secrets.yml')
-    JSON.parse(
-      YAML.load_file('secrets.yml').to_json,
-      object_class: OpenStruct,
-    )
-  else
-    OpenStruct.new
-  end
+SECRETS = OpenStruct.new
+
+if File.exists?(File.expand_path('~/.trials/secrets.yml'))
+  JSON.parse(
+    YAML.load_file(File.expand_path('~/.trials/secrets.yml')).to_json,
+    object_class: OpenStruct,
+  )
 end
 
 # init standard dirs
