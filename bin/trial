@@ -14,7 +14,7 @@ SECRETS = begin
       object_class: OpenStruct,
     )
   else
-    {}
+    OpenStruct.new
   end
 end
 
