@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trials (0.0.4)
+    trials (0.0.5)
       activesupport
       aws-sdk-dynamodb
       benchmark
