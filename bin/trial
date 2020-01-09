@@ -7,10 +7,16 @@ START_TIME = Time.now
 SCRIPT_NAME = ARGV[0].gsub('.rb', '')
 RUN = "#{START_TIME.strftime("%Y%m%dT%H%M%S")}_#{SCRIPT_NAME}"
 ROOT = Dir.pwd
-SECRETS = JSON.parse(
-  YAML.try(:load_file, 'credentials.yml')&.to_json || '{}',
-  object_class: OpenStruct,
-)
+SECRETS = begin
+  if File.exists?('secrets.yml')
+    JSON.parse(
+      YAML.load_file('secrets.yml').to_json,
+      object_class: OpenStruct,
+    )
+  else
+    {}
+  end
+end
 
 # init standard dirs
 FileUtils.mkdir_p("seeds")

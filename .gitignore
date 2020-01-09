@@ -2,3 +2,4 @@ seeds/
 results/
 tmp/
 credentials.yml
+*.gem

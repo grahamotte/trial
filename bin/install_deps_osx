@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-brew install sqlite
-brew cask install pdftotext
-
-bundle install
