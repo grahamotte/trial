@@ -6,11 +6,7 @@ Gem::Specification.new do |s|
   s.date = '2020-01-01'
   s.summary = 'gem for testing out ideas quickly'
   s.executables << 'trial'
-  s.files = [
-    "Gemfile",
-    "Rakefile",
-    "lib/trial.rb"
-  ]
+  s.files = ["lib/trials.rb"]
   s.files = Dir.glob("{bin,lib}/**/*")
   s.require_paths = ["lib"]
 

@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require 'trial'
+require 'trials'
 
 ROOT = 'test/fake_root'
 RUN = 'run_dir.rb'
