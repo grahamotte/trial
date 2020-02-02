@@ -3,6 +3,7 @@ require 'trials'
 
 ROOT = 'test/fake_root'
 RUN = 'run_dir.rb'
+SECRETS = {}
 
 class UnitTest < Minitest::Test
   def setup
