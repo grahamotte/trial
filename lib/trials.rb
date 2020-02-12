@@ -17,6 +17,7 @@ require 'sqlite3'
 require 'street_address'
 require 'tty-table'
 require 'yaml'
+require 'rack'
 
 require_relative 'trials/utils/various'
 require_relative 'trials/utils/csvs'
