@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trials (0.1.0)
+    trials (0.1.1)
       activesupport
       aws-sdk-dynamodb
       benchmark
@@ -34,20 +34,20 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     aws-eventstream (1.0.3)
-    aws-partitions (1.269.0)
-    aws-sdk-core (3.89.1)
+    aws-partitions (1.272.0)
+    aws-sdk-core (3.90.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-dynamodb (1.41.0)
+    aws-sdk-dynamodb (1.42.0)
       aws-sdk-core (~> 3, >= 3.71.0)
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.1.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
     benchmark (0.1.0)
     coderay (1.1.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     croupier (1.6.0)
     csv (3.1.2)
     declarative (0.0.10)
@@ -100,7 +100,7 @@ GEM
     namae (1.0.1)
     necromancer (0.5.1)
     netrc (0.11.0)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     numo-narray (0.9.1.6)
     os (1.0.1)
@@ -146,7 +146,7 @@ GEM
     thread_safe (0.3.6)
     tokenizer (0.3.0)
     tty-color (0.5.1)
-    tty-screen (0.7.0)
+    tty-screen (0.7.1)
     tty-table (0.11.0)
       equatable (~> 0.6)
       necromancer (~> 0.5)
