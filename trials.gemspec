@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'sqlite3'
   s.add_dependency 'street_address'
   s.add_dependency 'tty-table'
+  s.add_dependency 'rack'
 end
