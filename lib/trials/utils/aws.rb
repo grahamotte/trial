@@ -6,7 +6,7 @@ def ddb_connection
   )
 end
 
-def cached_ddb_scan(query)
+def ddb_scan_with_cache(query)
   json_cache(query.dig(:table_name)) { ddb_scan(query) }
 end
 
@@ -31,7 +31,6 @@ end
 
 def ddb_scan_without_segmentation(query)
   result = nil
-  requests = 0
   items = []
 
   loop do

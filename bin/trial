@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/trials'
-
 # env
 START_TIME = Time.now
 SCRIPT_NAME = ARGV[0].gsub('.rb', '')
 RUN = "#{START_TIME.strftime("%Y%m%dT%H%M%S")}_#{SCRIPT_NAME}"
 ROOT = Dir.pwd
+
+require_relative '../lib/trials'
+
 SECRETS = begin
   if File.exists?(File.expand_path('~/.trials/secrets.yml'))
     JSON.parse(
@@ -22,6 +23,10 @@ end
 FileUtils.mkdir_p("seeds")
 FileUtils.mkdir_p("results/#{RUN}")
 FileUtils.mkdir_p("tmp")
+FileUtils.mkdir_p("cache")
+
+# allow to init the current folder
+return if SCRIPT_NAME == 'init'
 
 # log start
 log "starting #{SCRIPT_NAME} at #{START_TIME.iso8601}"

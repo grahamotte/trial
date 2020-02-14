@@ -8,9 +8,9 @@ class FilesTest < UnitTest
   end
 
   def test_create_file_and_make_seed
-    write('test_file.txt', 'super special datas')
-    make_seed('test_file.txt')
-    assert_equal 'super special datas', read('test_file.txt')
+    write_result('test_file.txt', 'super special datas')
+    cp_result_to_seeds('test_file.txt')
+    assert_equal 'super special datas', read_seed('test_file.txt')
   end
 
   def test_list_dir
@@ -24,11 +24,12 @@ class FilesTest < UnitTest
       'test/fake_root/seeds/files/6_file.f',
       'test/fake_root/seeds/files/2_file.f',
     ]
-    assert_equal expected.sort, list_dir('files').sort
+
+    assert_equal expected.sort, list_seeds('files').sort
   end
 
   def test_read
-    assert_nil read('this_file_doesnt_exist.txt')
-    assert_equal 'Enim quisq', read('some_text.txt').first(10)
+    assert_nil read_seed('this_file_doesnt_exist.txt')
+    assert_equal 'Enim quisq', read_seed('some_text.txt').first(10)
   end
 end

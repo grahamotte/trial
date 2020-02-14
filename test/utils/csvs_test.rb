@@ -7,7 +7,7 @@ class CsvsTest < UnitTest
 
   def test_write_csv_from_hashes
     write_csv_from_hashes('new_csv_file.csv', read_csv('csv_file.csv'))
-    make_seed('new_csv_file.csv')
+    cp_result_to_seeds('new_csv_file.csv')
     assert_equal parsed_csv, read_csv('new_csv_file.csv')
   end
 
@@ -18,7 +18,7 @@ class CsvsTest < UnitTest
       attrs: [:age, :country],
     )
 
-    make_seed('new_csv_file.csv')
+    cp_result_to_seeds('new_csv_file.csv')
 
     expected = [
       {age:"89", country:"barcelona"},

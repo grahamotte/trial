@@ -1,9 +1,9 @@
-require "minitest/autorun"
-require 'trials'
-
 ROOT = 'test/fake_root'
 RUN = 'run_dir.rb'
 SECRETS = {}
+
+require "minitest/autorun"
+require 'trials'
 
 class UnitTest < Minitest::Test
   def setup

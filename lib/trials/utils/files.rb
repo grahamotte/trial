@@ -1,110 +1,72 @@
-# paths
+dirs = {
+  seed: { run: false, pluralized: ActiveSupport::Inflector.pluralize('seed') },
+  result: { run: true, pluralized: ActiveSupport::Inflector.pluralize('result') },
+  tmp: { run: false, pluralized: 'tmp' },
+  cache: { run: false, pluralized: 'cache' },
+}
 
-def seeds_path(name)
-  "#{ROOT}/seeds/#{name}"
-end
+dirs.each do |dir, opts|
+  eval <<~RUBY
+    def #{opts.dig(:pluralized)}_root
+      File.join(
+        ROOT,
+        '#{opts.dig(:pluralized)}',
+        '#{opts.dig(:run) ? RUN : nil}',
+      ).to_s
+    end
 
-alias seed_path seeds_path
+    def #{dir}_path(name)
+      File.join(
+        #{opts.dig(:pluralized)}_root,
+        name,
+      ).to_s
+    end
 
-def seed_exists?(name)
-  File.exist?(seed_path(name))
-end
+    def #{dir}_exists?(name)
+      File.exist?(#{dir}_path(name))
+    end
 
-alias seeds_exist? seed_exists?
+    def list_#{opts.dig(:pluralized)}(name = nil)
+      Dir[
+        File.join(
+          *[
+            #{opts.dig(:pluralized)}_root,
+            name,
+            '**',
+            '*',
+          ].compact
+        )
+      ].reject { |d| File.directory?(d) }
+    end
 
-def results_path(name)
-  "#{ROOT}/results/#{RUN}/#{name}"
-end
+    def read_#{dir}(name)
+      File.read(#{dir}_path(name)) if #{dir}_exists?(name)
+    end
 
-alias result_path results_path
+    def readlines_#{dir}(name)
+      read_#{dir}(name).split("\\n")
+    end
 
-def result_exists?(name)
-  File.exist?(result_path(name))
-end
+    def write_#{dir}(name, content)
+      FileUtils.mkdir_p(File.dirname(#{dir}_path(name)))
+      File.open(#{dir}_path(name), 'w') { |f| f << content }
+    end
 
-alias results_exist? result_exists?
+    def append_to_#{dir}(name, content)
+      File.open(#{dir}_path(name), 'a') { |f| f << content }
+    end
 
-def tmp_path(name)
-  "#{ROOT}/tmp/#{name}"
-end
+    def delete_#{dir}(name)
+      FileUtils.rm_r(#{dir}_path(name)) if #{dir}_exists?(name)
+    end
+  RUBY
 
-def tmp_exists?(name)
-  File.exist?(tmp_path(name))
-end
-
-def list_dir(dir)
-  Dir["#{seeds_path(dir)}/**/*"]
-end
-
-# reading
-
-def read(file)
-  return unless seed_exists?(file)
-  File.read(seeds_path(file))
-end
-
-alias read_seed read
-alias read_seeds read
-
-def read_tmp(file)
-  return unless tmp_exists?(file)
-  File.read(tmp_path(file))
-end
-
-def readlines(file)
-  File.read(seeds_path(file)).split("\n")
-end
-
-# writing
-
-def write(file, content)
-  FileUtils.mkdir_p(File.dirname(results_path(file)))
-  File.open(results_path(file), 'w') { |f| f << content }
-end
-
-alias write_result write
-alias write_results write
-
-def write_tmp(file, content)
-  FileUtils.mkdir_p(File.dirname(tmp_path(file)))
-  File.open(tmp_path(file), 'w') { |f| f << content }
-end
-
-def append(file, content)
-  File.open(results_path(file), 'a') { |f| f << content }
-end
-
-alias append_result append
-alias append_results append
-
-# deleting
-
-def delete(file)
-  return unless result_exists?(file)
-  FileUtils.rm_r(results_path(file))
-end
-
-alias delete_result delete
-alias delete_results delete
-
-def delete_tmp(file)
-  return unless tmp_exists?(file)
-  FileUtils.rm_r(tmp_path(file))
-end
-
-def delete_seeds(file)
-  return unless seed_exists?(file)
-  FileUtils.rm_r(seeds_path(file))
-end
-
-alias delete_seed delete_seeds
-
-# other
-
-def make_seed(file)
-  FileUtils.cp(results_path(file), seeds_path(file))
-end
-
-def make_tmp(file)
-  FileUtils.cp(results_path(file), tmp_path(file))
+  dirs.each do |o_dir, o_opts|
+    next if o_dir == dir
+    eval <<~RUBY
+      def cp_#{o_dir}_to_#{opts.dig(:pluralized)}(name)
+        FileUtils.cp(#{o_dir}_path(name), #{dir}_path(name))
+      end
+    RUBY
+  end
 end

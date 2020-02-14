@@ -20,6 +20,14 @@ class HArray < Array
     end
   end
 
+  def normalize_keys
+    hashes.map do |h|
+      h
+        .map { |k, v| [normalize_key(k), v] }
+        .to_h
+    end
+  end
+
   def uniq_keys
     hashes.flat_map(&:keys).uniq.compact
   end
@@ -48,5 +56,11 @@ class HArray < Array
         .compact
         .reduce(&:merge)
     end
+  end
+
+  private
+
+  def normalize_key(k)
+    k.downcase.to_sym
   end
 end

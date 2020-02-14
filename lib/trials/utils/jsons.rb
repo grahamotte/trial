@@ -1,5 +1,5 @@
 def read_json(filename)
-  result = JSON.parse(read(filename))
+  result = JSON.parse(read_seed(filename))
 
   aggressive_deep_symbolize_keys(result)
 end
@@ -11,12 +11,12 @@ end
 def json_cache(key)
   name = "json/#{key}.json"
 
-  return aggressive_deep_symbolize_keys(JSON.parse(read_tmp(name))) if tmp_exists?(name)
+  return aggressive_deep_symbolize_keys(JSON.parse(read_cache(name))) if cache_exists?(name)
 
-  write_tmp(name, yield.to_json)
+  write_cache(name, yield.to_json)
   json_cache(key)
 end
 
 def invalidate_json_cache
-  delete_tmp("json")
+  delete_cache("json")
 end

@@ -1,7 +1,7 @@
 def render_table_from_hashes(hash_set, sort: true, headers: nil)
   return 'no data' if hash_set.blank?
 
-  headers = headers || uniq_hash_keys(hash_set)
+  headers = headers || hash_set.to_harray.uniq_keys
 
   headers.sort! if sort
 
@@ -21,7 +21,7 @@ def log(item, nl: true, quiet: false, each: true)
     return
   end
 
-  File.open(results_path('log.txt'), 'a') do |f|
+  File.open(result_path('log.txt'), 'a') do |f|
     f << begin
       if item.is_a?(String) || item.is_a?(Numeric)
         item.to_s
